@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">constellation</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_home">首页</string>
+    <string name="title_mine">我的</string>
+    <string name="match_title">星座配对 - %1$s座和%2$s座配对</string>
+    <string name="match_vs">%1$s VS. %2$s</string>
+    <string name="match_pingfen">配对评分：%1$s&#160;&#160; %2$s</string>
+    <string name="match_bizhong">星座比重：%1$s</string>
+    <string name="match_xiangyue">两情相悦指数：%1$s</string>
+    <string name="match_tcdj">天长地久指数：%1$s</string>
+</resources>
