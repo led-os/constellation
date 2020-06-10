@@ -68,23 +68,42 @@ class HomeFragment : Fragment() {
     }
 
     fun getConstellation() {
-        var count = 0;
+        var count = 0
         datas.forEach { it1 ->
             datas.forEach { it2 ->
-                /*请求数据*/
-                count++
-                Log.e("http", "count===$count")
-                netViewModel.getConstellation(
-                    it1["name"].toString(),
-                    it2["name"].toString(),
-                    (if (count < 80) {
-                        "a08fe8aa7f3143a8d99eb1e3186867b1"
-                    } else {
-                        "8ee3a70398a696f8ebd9a35b24ed25d0"
-                    })
-                )
+                val men = it1["name"].toString()
+                val women = it2["name"].toString()
+                fun getConstellation() {
+                    sqlViewModel.queryForMen(men, women)
+                        .observe(viewLifecycleOwner,
+                            Observer {
+                                if (it == null) {
+                                    count++
+                                    Log.e("http", "$count--$men-===$women")
+                                    netViewModel.getConstellation(
+                                        men, women, "a08fe8aa7f3143a8d99eb1e3186867b1"
+                                    )
+                                }
+                            })
+                }
+
+                fun getAllConstellation() {
+                    Log.e("http", "getAllConstellation--->count===$count")
+                    netViewModel.getConstellation(
+                        men,
+                        women,
+                        (if (count < 80) {
+                            "a08fe8aa7f3143a8d99eb1e3186867b1"
+                        } else {
+                            "8ee3a70398a696f8ebd9a35b24ed25d0"
+                        })
+                    )
+                }
+                getConstellation()
+//                getAllConstellation()
             }
         }
+
 
     }
 

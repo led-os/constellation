@@ -19,8 +19,8 @@ abstract class ConstellationDatabase : RoomDatabase() {
                 instance = Room.databaseBuilder(
                     context.applicationContext,
                     ConstellationDatabase::class.java,
-                    "constellation.db" //数据库名称
-                ).createFromAsset("constellation.db")
+                    "1.db" //数据库名称
+                ).createFromAsset("1.db")
 //                    .allowMainThreadQueries()
                     .build()
             }
