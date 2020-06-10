@@ -8,7 +8,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.mooc.constellation"
+        applicationId "com.matchxz.lzhy"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -62,7 +62,5 @@ dependencies {
     implementation "androidx.room:room-ktx:2.2.5"
 // For Kotlin use kapt instead of annotationProcessor (注意这个注释)
     kapt "androidx.room:room-compiler:2.2.5"
-    compile 'com.contrarywind:Android-PickerView:4.1.9'
-
 
 }
