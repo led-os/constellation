@@ -17,10 +17,31 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
+    signingConfigs {
         release {
-            minifyEnabled false
+            keyAlias 'constellation'
+            keyPassword '*ZH!cQ@8zBWNNwHi'
+            storeFile file('./constellation.jks')
+            storePassword 'C66yNXh4QB!%PJ%k'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+
+        release {
+            minifyEnabled true   //开启混淆
+            zipAlignEnabled true  //压缩优化
+            shrinkResources true  //移出无用资源
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "constellation-v${variant.versionName} ${getCurrentTime()}.apk"
         }
     }
     compileOptions {
@@ -30,6 +51,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+static def getCurrentTime() {
+    def date = new Date()
+    return date.format('yy-MM-dd HH-mm')
 }
 
 dependencies {

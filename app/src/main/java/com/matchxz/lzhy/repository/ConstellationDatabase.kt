@@ -20,7 +20,7 @@ abstract class ConstellationDatabase : RoomDatabase() {
                     context.applicationContext,
                     ConstellationDatabase::class.java,
                     "1.db" //数据库名称
-                ).createFromAsset("1.db")
+                ).createFromAsset("constellation.db")
 //                    .allowMainThreadQueries()
                     .build()
             }
